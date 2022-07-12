@@ -16,9 +16,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { SettingsComponent } from './settings/settings.component';
+import { CompanyListComponent } from './company-list/company-list.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { CompanyComponent } from './company/company.component';
 
 @NgModule({
-  declarations: [AppComponent, AppBarComponent, SideNavComponent, DashboardComponent],
+  declarations: [AppComponent, AppBarComponent, SideNavComponent, DashboardComponent, SettingsComponent, CompanyListComponent, CompanyComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,6 +38,9 @@ import { MatMenuModule } from '@angular/material/menu';
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

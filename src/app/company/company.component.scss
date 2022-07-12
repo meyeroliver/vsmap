@@ -1,0 +1,12 @@
+.company-container{
+  height: calc(100% - 64px);
+  justify-content: space-between;
+  flex-direction: column;
+  display: flex;
+}
+
+.company-add-button-container{
+  justify-content: flex-end;
+  display: flex;
+  margin: 32px;
+}
