@@ -22,26 +22,32 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { CompanyComponent } from './company/company.component';
+import { CompanyDetailsTabComponent } from './company-details-tab/company-details-tab.component';
+import {MatTabsModule} from "@angular/material/tabs";
+import { CompanyFormComponent } from './company-form/company-form.component';
+import { SupplierFormComponent } from './supplier-form/supplier-form.component';
+import { CustomerFormComponent } from './customer-form/customer-form.component';
 
 @NgModule({
-  declarations: [AppComponent, AppBarComponent, SideNavComponent, DashboardComponent, SettingsComponent, CompanyListComponent, CompanyComponent],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    LayoutModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatListModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-  ],
+  declarations: [AppComponent, AppBarComponent, SideNavComponent, DashboardComponent, SettingsComponent, CompanyListComponent, CompanyComponent, CompanyDetailsTabComponent, CompanyFormComponent, SupplierFormComponent, CustomerFormComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        LayoutModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatListModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatTabsModule,
+    ],
   providers: [],
   bootstrap: [AppComponent],
 })
