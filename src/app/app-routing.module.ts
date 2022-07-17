@@ -8,8 +8,11 @@ import {CompanyDetailsTabComponent} from "./company-details-tab/company-details-
 const routes: Routes = [
   {path: 'home', component: DashboardComponent},
   {path: 'settings', component: SettingsComponent},
-  {path: 'companies/:id', component: CompanyDetailsTabComponent},
-  {path: 'companies', component: CompanyComponent}
+  {path: 'companies', component: CompanyComponent,
+    children: [
+      {path: ':id', component: CompanyDetailsTabComponent},
+    ]
+  }
 ];
 
 @NgModule({
