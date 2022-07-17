@@ -27,9 +27,17 @@ import {MatTabsModule} from "@angular/material/tabs";
 import { CompanyFormComponent } from './company-form/company-form.component';
 import { SupplierFormComponent } from './supplier-form/supplier-form.component';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import { MatRadioModule } from '@angular/material/radio';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, AppBarComponent, SideNavComponent, DashboardComponent, SettingsComponent, CompanyListComponent, CompanyComponent, CompanyDetailsTabComponent, CompanyFormComponent, SupplierFormComponent, CustomerFormComponent],
+  declarations: [
+    AppComponent, AppBarComponent, SideNavComponent, DashboardComponent, SettingsComponent, CompanyListComponent,
+    CompanyComponent, CompanyDetailsTabComponent, CompanyFormComponent, SupplierFormComponent, CustomerFormComponent
+  ],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -47,6 +55,11 @@ import { CustomerFormComponent } from './customer-form/customer-form.component';
         MatPaginatorModule,
         MatSortModule,
         MatTabsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatRadioModule,
+        ReactiveFormsModule,
     ],
   providers: [],
   bootstrap: [AppComponent],
