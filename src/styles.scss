@@ -23,3 +23,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin-left: auto;
   margin-right: auto;
 }
+
+.form-row{
+  display: flex;
+  justify-content: space-between;
+}
+.form-row-input{
+  width: calc(50% - 8px);
+}
