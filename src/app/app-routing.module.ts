@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {DashboardComponent} from "./dashboard/dashboard.component";
-import {SettingsComponent} from "./settings/settings.component";
-import {CompanyComponent} from "./company/company.component";
-import {CompanyDetailsTabComponent} from "./company/company-details-tab/company-details-tab.component";
+import {DashboardComponent} from "./ui/dashboard/dashboard.component";
+import {SettingsComponent} from "./ui/settings/settings.component";
+import {CompanyComponent} from "./ui/company/company.component";
+import {CompanyDetailsTabComponent} from "./ui/company/company-details-tab/company-details-tab.component";
 
 const routes: Routes = [
   {path: 'home', component: DashboardComponent},

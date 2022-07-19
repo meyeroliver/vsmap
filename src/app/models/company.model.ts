@@ -13,7 +13,7 @@ export class Company{
   businessType: string;
   production: string;
 
-  constructor(name: string, vatNumber: number, staffCount: number, owner: ContactPerson, contactPerson: ContactPerson, physicalAddress: Address, postalAddress: Address, industry: string, businessType: string, production: string) {
+  constructor(name: string, vatNumber: number, staffCount: number, owner: ContactPerson, contactPerson: ContactPerson, physicalAddress: any, postalAddress: any, industry: string, businessType: string, production: string) {
     this.name = name;
     this.vatNumber = vatNumber;
     this.staffCount = staffCount;

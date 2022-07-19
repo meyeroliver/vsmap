@@ -23,16 +23,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppBarComponent } from './app-bar/app-bar.component';
-import { SideNavComponent } from './side-nav/side-nav.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { SettingsComponent } from './settings/settings.component';
-import { CompanyComponent } from './company/company.component';
-import { SupplierFormComponent } from './company/supplier-form/supplier-form.component';
-import { CustomerFormComponent } from './company/customer-form/customer-form.component';
-import {CompanyDetailsTabComponent} from "./company/company-details-tab/company-details-tab.component";
-import {CompanyFormComponent} from "./company/company-form/company-form.component";
-import {CompanyListComponent} from "./company/company-list/company-list.component";
+import { AppBarComponent } from './ui/app-bar/app-bar.component';
+import { SideNavComponent } from './ui/side-nav/side-nav.component';
+import { DashboardComponent } from './ui/dashboard/dashboard.component';
+import { SettingsComponent } from './ui/settings/settings.component';
+import { CompanyComponent } from './ui/company/company.component';
+import { SupplierFormComponent } from './ui/company/supplier-form/supplier-form.component';
+import { CustomerFormComponent } from './ui/company/customer-form/customer-form.component';
+import {CompanyDetailsTabComponent} from "./ui/company/company-details-tab/company-details-tab.component";
+import {CompanyFormComponent} from "./ui/company/company-form/company-form.component";
+import {CompanyListComponent} from "./ui/company/company-list/company-list.component";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
