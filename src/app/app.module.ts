@@ -33,6 +33,7 @@ import { CustomerFormComponent } from './company/customer-form/customer-form.com
 import {CompanyDetailsTabComponent} from "./company/company-details-tab/company-details-tab.component";
 import {CompanyFormComponent} from "./company/company-form/company-form.component";
 import {CompanyListComponent} from "./company/company-list/company-list.component";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import {CompanyListComponent} from "./company/company-list/company-list.componen
         MatSelectModule,
         MatRadioModule,
         ReactiveFormsModule,
+        MatCheckboxModule,
     ],
   providers: [],
   bootstrap: [AppComponent],
