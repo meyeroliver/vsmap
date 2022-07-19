@@ -34,6 +34,7 @@ import {CompanyDetailsTabComponent} from "./ui/company/company-details-tab/compa
 import {CompanyFormComponent} from "./ui/company/company-form/company-form.component";
 import {CompanyListComponent} from "./ui/company/company-list/company-list.component";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import {CompanyService} from "./services/company.service";
 
 @NgModule({
   declarations: [
@@ -64,7 +65,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
         ReactiveFormsModule,
         MatCheckboxModule,
     ],
-  providers: [],
+  providers: [CompanyService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

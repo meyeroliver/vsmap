@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
 import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {map, shareReplay} from "rxjs/operators";
+import {CompanyService} from "../../services/company.service";
+import {Company} from "../../models/company.model";
 
 @Component({
   selector: 'company',
@@ -10,16 +12,23 @@ import {map, shareReplay} from "rxjs/operators";
 })
 export class CompanyComponent implements OnInit {
 
-  // constructor() { }
+  companyList: Array<Company> = [];
+  constructor(private breakpointObserver: BreakpointObserver, private companyService: CompanyService) {}
 
   ngOnInit(): void {
+    if (this.companyService.companyList.length == 0){
+      this.companyService.generateMockCompanies();
+    }
+    this.companyList = this.companyService.companyList;
   }
+
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
-
+  onSelectCompany(company:Company){
+    this.companyService.selectedCompany = company;
+  }
 }

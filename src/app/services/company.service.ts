@@ -5,13 +5,17 @@ import {ContactPerson} from "../models/contactPerson.model";
 @Injectable()
 export class CompanyService{
 
+  selectedCompany?: Company;
   companyList: Array<Company> = [];
+  private ownersList: Array<ContactPerson> = [];
+  private contactPersonList: Array<ContactPerson> = [];
 
+  setSelectedCompany(company: Company){
+    this.selectedCompany = company;
+    console.log(this.selectedCompany);
+  }
 
-  ownersList: Array<ContactPerson> = [];
-  contactPersonList: Array<ContactPerson> = [];
-
-  generateMockOwners(){
+  private generateMockOwners(){
     let ownerNameList = ['Pitte', 'Kop', 'Hond'];
     let ownerLastList = ['een', 'twee', 'drie'];
     let cellNumberList = ['00000000000', '1111111111', '2222222222'];
@@ -24,7 +28,7 @@ export class CompanyService{
     }
   }
 
-  generateMockContactPerson(){
+  private generateMockContactPerson(){
     let ownerNameList = ['Tik', 'Monster', 'Hond'];
     let ownerLastList = ['Kos', 'Baar', 'drie'];
     let cellNumberList = ['00000000020', '11899111111', '2222222222'];
@@ -51,7 +55,8 @@ export class CompanyService{
     for (let i = 0; i < cNameList.length; i++) {
       company = new Company(cNameList[i], vatNumberList[i], staffCount[i], this.ownersList[i],
         this.contactPersonList[i],null, null,industryList[i], businessTypeList[i],
-        productionList[i] )
+        productionList[i] );
+      this.companyList.push(company)
     }
   }
 }
