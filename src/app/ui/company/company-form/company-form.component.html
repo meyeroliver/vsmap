@@ -1,25 +1,37 @@
 <div>
   <div class="col-6 center">
     <mat-card>
-      <form class="">
+      <form class="" [formGroup]="companyForm" >
         <div class="">
           <mat-form-field appearance="outline" class="form-row-input">
             <mat-label>Company Name</mat-label>
-            <input matInput placeholder="Company Name">
+            <input
+              matInput
+              id="company"
+              formControlName="companyName"
+              placeholder="Company Name"
+            >
             <!--          <mat-hint>Enter in the name on the company</mat-hint>-->
           </mat-form-field>
         </div>
         <div class="div">
           <mat-form-field appearance="outline" class="form-row-input">
             <mat-label>VAT Number</mat-label>
-            <input matInput placeholder="00000000">
+            <input matInput
+                   id="vatNum"
+                   formControlName="vatNumber"
+                   placeholder="00000000"
+            >
             <!--          <mat-hint>Enter in the VAT Number</mat-hint>-->
           </mat-form-field>
         </div>
         <div class="div">
           <mat-form-field appearance="outline" class="form-row-input">
             <mat-label>Staff Count</mat-label>
-            <input matInput placeholder="36">
+            <input matInput
+                   placeholder="36"
+                   formControlName="staffCount"
+            >
             <!--          <mat-hint>Enter in the number of staff</mat-hint>-->
           </mat-form-field>
         </div>
@@ -28,9 +40,12 @@
         <p>Working Environment</p>
 
         <div class="form-row">
-          <mat-form-field appearance="outline" class="form-row-input">
+          <mat-form-field
+            appearance="outline"
+
+            class="form-row-input">
             <mat-label>Industry</mat-label>
-            <mat-select>
+            <mat-select formControlName="industry">
               <mat-option value="primary">Primary</mat-option>
               <mat-option value="accent">Accent</mat-option>
               <mat-option value="warn">Warn</mat-option>
@@ -39,9 +54,15 @@
         </div>
 
         <div class="form-row">
-          <mat-form-field appearance="outline" class="form-row-input">
+          <mat-form-field
+            appearance="outline"
+            class="form-row-input"
+
+          >
             <mat-label>Business Type</mat-label>
-            <mat-select>
+            <mat-select
+              formControlName="businessType"
+            >
               <mat-option value="primary">Primary</mat-option>
               <mat-option value="accent">Accent</mat-option>
               <mat-option value="warn">Warn</mat-option>
@@ -50,9 +71,13 @@
         </div>
 
         <div class="form-row">
-          <mat-form-field appearance="outline" class="form-row-input">
+          <mat-form-field
+            appearance="outline"
+
+            class="form-row-input"
+          >
             <mat-label>Production Style</mat-label>
-            <mat-select>
+            <mat-select  formControlName="production">
               <mat-option value="primary">Primary</mat-option>
               <mat-option value="accent">Accent</mat-option>
               <mat-option value="warn">Warn</mat-option>
@@ -66,13 +91,21 @@
         <div class="form-row">
           <mat-form-field appearance="outline" class="form-row-input">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="Peter">
+            <input
+              matInput
+              formControlName="ownerFirstname"
+              placeholder="Peter"
+            >
             <!--          <mat-hint>Enter in the firstname of the owner</mat-hint>-->
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="form-row-input">
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Oliver">
+            <input
+              matInput
+              formControlName="ownerLastname"
+              placeholder="Oliver"
+            >
             <!--          <mat-hint>Enter in the lastname of the owner</mat-hint>-->
           </mat-form-field>
         </div>
@@ -80,13 +113,21 @@
         <div class="form-row">
           <mat-form-field appearance="outline" class="form-row-input">
             <mat-label>Cell Number</mat-label>
-            <input matInput placeholder="026589462">
+            <input
+              matInput
+              formControlName="ownerCell"
+              placeholder="026589462"
+            >
             <!--          <mat-hint>Enter in the cell number of the owner</mat-hint>-->
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="form-row-input">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="example@gmail.com">
+            <input
+              matInput
+              formControlName="ownerEmail"
+              placeholder="example@gmail.com"
+            >
             <!--          <mat-hint>Enter in the email of the owner</mat-hint>-->
           </mat-form-field>
         </div>
@@ -95,13 +136,20 @@
         <div class="form-row">
           <mat-form-field appearance="outline" class="form-row-input">
             <mat-label>First Name</mat-label>
-            <input matInput placeholder="Peter">
+            <input
+              matInput
+              formControlName="contactPersonFirstname"
+              placeholder="Peter"
+            >
             <!--          <mat-hint>Enter in the firstname of the owner</mat-hint>-->
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="form-row-input">
             <mat-label>Last Name</mat-label>
-            <input matInput placeholder="Oliver">
+            <input
+              matInput
+              formControlName="contactPersonLastname"
+              placeholder="Oliver">
             <!--          <mat-hint>Enter in the lastname of the owner</mat-hint>-->
           </mat-form-field>
         </div>
@@ -109,13 +157,20 @@
         <div class="form-row">
           <mat-form-field appearance="outline" class="form-row-input">
             <mat-label>Cell Number</mat-label>
-            <input matInput placeholder="026589462">
+            <input
+              matInput
+              formControlName="contactPersonCell"
+              placeholder="026589462"
+            >
             <!--          <mat-hint>Enter in the cell number of the owner</mat-hint>-->
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="form-row-input">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="example@gmail.com">
+            <input
+              matInput
+              formControlName="contactPersonFirstname"
+              placeholder="contactPersonEmail">
             <!--          <mat-hint>Enter in the email of the owner</mat-hint>-->
           </mat-form-field>
         </div>

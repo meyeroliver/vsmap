@@ -29,6 +29,7 @@ export class CompanyComponent implements OnInit {
     );
 
   onSelectCompany(company:Company){
-    this.companyService.selectedCompany = company;
+    this.companyService.setSelectedCompany(company)
+    this.companyService.companySelected.emit(company);
   }
 }
