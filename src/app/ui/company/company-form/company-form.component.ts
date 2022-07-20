@@ -50,9 +50,21 @@ export class CompanyFormComponent implements OnInit {
         'email': new FormControl(null, [Validators.required, Validators.email]),
         'cell': new FormControl(null, [Validators.required, Validators.min(10), Validators.max(12)]),
       }),
-
-
-    })
+      'physicalAddress': new FormGroup<any>({
+        'street': new FormControl(null,),
+        'city': new FormControl(null,),
+        'province': new FormControl(null,),
+        'country': new FormControl(null,),
+        'postalCode': new FormControl(null,),
+      }),
+      'postalAddress': new FormGroup<any>({
+        'street': new FormControl(null,),
+        'city': new FormControl(null,),
+        'province': new FormControl(null,),
+        'country': new FormControl(null,),
+        'postalCode': new FormControl(null,),
+      }),
+    });
   }
 
   populateForm() {
@@ -75,7 +87,21 @@ export class CompanyFormComponent implements OnInit {
           'lastname': this.company?.contactPerson?.lastName,
           'email': this.company?.contactPerson?.email,
           'cell': this.company?.contactPerson?.cell
-        }
+        },
+        'physicalAddress': {
+          'street': this.company?.physicalAddress?.street,
+          'city': this.company?.physicalAddress?.city,
+          'province': this.company?.physicalAddress?.province,
+          'country': this.company?.physicalAddress?.country,
+          'postalCode': this.company?.physicalAddress?.postalCode,
+        },
+      'postalAddress': {
+        'street': this.company?.physicalAddress?.street,
+        'city': this.company?.physicalAddress?.city,
+        'province': this.company?.physicalAddress?.province,
+        'country': this.company?.physicalAddress?.country,
+        'postalCode': this.company?.physicalAddress?.postalCode,
+      },
       }
     );
   }

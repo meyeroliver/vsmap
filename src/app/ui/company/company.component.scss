@@ -14,10 +14,18 @@
   width: 200px
 }
 
-.company-add-button-container{
-  justify-content: flex-end;
-  display: flex;
-  margin: 32px;
+.title-container{
+  height: 64px;
 }
+
+.company-list-container{
+  height: calc(100% - 64px - 68px);
+}
+
+.company-add-button{
+  width: calc(100% - 32px);
+  margin: 16px;
+}
+
 
 

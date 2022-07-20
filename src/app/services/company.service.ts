@@ -1,6 +1,7 @@
 import {EventEmitter, Injectable} from "@angular/core";
 import {Company} from "../models/company.model";
 import {ContactPerson} from "../models/contactPerson.model";
+import {Address} from "../models/address.model";
 
 @Injectable()
 export class CompanyService {
@@ -9,6 +10,7 @@ export class CompanyService {
   private listLength: number = 3;
   private ownersList: Array<ContactPerson> = [];
   private contactPersonList: Array<ContactPerson> = [];
+  private addressList: Array<Address> = [];
   companyList: Array<Company> = [];
   companySelected = new EventEmitter<Company>();
 
@@ -46,6 +48,19 @@ export class CompanyService {
     }
   }
 
+  private generateMockAddress(){
+    let streetList = ['okawe', 'masekind', 'isja'];
+    let cityList = ['Kapse', 'Jozi', 'Durbs'];
+    let provinceList = ['Western Cape', 'Guatenng a leng', 'Land of the Zulus'];
+    let postalCodeList = ['7983', '2357','0000']
+    let address: Address;
+
+    for (let i = 0; i < this.listLength; i++) {
+        address = new Address(streetList[i],cityList[i], provinceList[i], 'South Africa', postalCodeList[i]);
+        this.addressList.push(address);
+    }
+  }
+
   generateMockCompanies() {
     let cNameList = ['Mugg And Bean', 'Addidas', 'Nestle'];
     let staffCount = [40, 23, 100]
@@ -56,11 +71,12 @@ export class CompanyService {
     let company: Company;
     this.generateMockContactPerson();
     this.generateMockOwners();
+    this.generateMockAddress()
 
     for (let i = 0; i < this.listLength; i++) {
       company = new Company(cNameList[i], vatNumberList[i], staffCount[i], this.ownersList[i],
-        this.contactPersonList[i], null, null, industryList[i], businessTypeList[i],
-        productionList[i]);
+        this.contactPersonList[i], this.addressList[i], this.addressList[i], industryList[i],
+        businessTypeList[i], productionList[i]);
       this.companyList.push(company)
     }
   }
