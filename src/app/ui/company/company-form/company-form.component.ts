@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {CompanyService} from "../../../services/company.service";
 import {FormControl, FormGroup, Validator, Validators} from "@angular/forms";
 import {Company} from "../../../models/company.model";
+import {ContactPerson} from "../../../models/contactPerson.model";
+import {Address} from "../../../models/address.model";
 
 @Component({
   selector: 'company-form',
@@ -12,6 +14,8 @@ export class CompanyFormComponent implements OnInit {
 
   companyForm!: FormGroup;
   company?: Company;
+  sameAsPhysical: boolean = false;
+  sameAsOwner: boolean = false;
 
   constructor(private companyService: CompanyService) {
     this.companyService.companySelected.subscribe((company) => {
@@ -25,6 +29,10 @@ export class CompanyFormComponent implements OnInit {
     if (this.companyService.getSelectedCompany() !== null) {
       this.company = this.companyService.getSelectedCompany();
       this.populateForm();
+    } else {
+      this.sameAsOwner = false;
+      this.sameAsPhysical = false;
+      this.companyForm.reset();
     }
   }
 
@@ -39,30 +47,32 @@ export class CompanyFormComponent implements OnInit {
         'production': new FormControl(null),
       }),
       'owner': new FormGroup<any>({
-        'firstname': new FormControl(null, Validators.required),
-        'lastname': new FormControl(null, Validators.required),
-        'email': new FormControl(null, [Validators.required, Validators.email]),
-        'cell': new FormControl(null, [Validators.required, Validators.min(10), Validators.max(12)]),
+        'firstname': new FormControl(null,),
+        'lastname': new FormControl(null,),
+        'email': new FormControl(null,),
+        'cell': new FormControl(null,),
       }),
+      'sameAsOwner': new FormControl<any>(false),
       'contactPerson': new FormGroup<any>({
-        'firstname': new FormControl(null, Validators.required),
-        'lastname': new FormControl(null, Validators.required),
-        'email': new FormControl(null, [Validators.required, Validators.email]),
-        'cell': new FormControl(null, [Validators.required, Validators.min(10), Validators.max(12)]),
+        'firstname': new FormControl(null,),
+        'lastname': new FormControl(null,),
+        'email': new FormControl(null,),
+        'cell': new FormControl(null,),
       }),
       'physicalAddress': new FormGroup<any>({
-        'street': new FormControl(null,),
-        'city': new FormControl(null,),
-        'province': new FormControl(null,),
-        'country': new FormControl(null,),
-        'postalCode': new FormControl(null,),
+        'street': new FormControl(null, Validators.required),
+        'city': new FormControl(null, Validators.required),
+        'province': new FormControl(null, Validators.required),
+        'country': new FormControl(null, Validators.required),
+        'postalCode': new FormControl(null, Validators.required),
       }),
+      'sameAsPhysical': new FormControl(false),
       'postalAddress': new FormGroup<any>({
-        'street': new FormControl(null,),
-        'city': new FormControl(null,),
-        'province': new FormControl(null,),
-        'country': new FormControl(null,),
-        'postalCode': new FormControl(null,),
+        'street': new FormControl(null, Validators.required),
+        'city': new FormControl(null, Validators.required),
+        'province': new FormControl(null, Validators.required),
+        'country': new FormControl(null, Validators.required),
+        'postalCode': new FormControl(null, Validators.required),
       }),
     });
   }
@@ -82,6 +92,7 @@ export class CompanyFormComponent implements OnInit {
           'email': this.company?.owner?.email,
           'cell': this.company?.owner?.cell,
         },
+        'sameAsOwner': this.sameAsOwner,
         'contactPerson': {
           'firstname': this.company?.contactPerson?.firstName,
           'lastname': this.company?.contactPerson?.lastName,
@@ -95,15 +106,75 @@ export class CompanyFormComponent implements OnInit {
           'country': this.company?.physicalAddress?.country,
           'postalCode': this.company?.physicalAddress?.postalCode,
         },
-      'postalAddress': {
-        'street': this.company?.physicalAddress?.street,
-        'city': this.company?.physicalAddress?.city,
-        'province': this.company?.physicalAddress?.province,
-        'country': this.company?.physicalAddress?.country,
-        'postalCode': this.company?.physicalAddress?.postalCode,
-      },
+        'samePhysical': this.sameAsPhysical,
+        'postalAddress': {
+          'street': this.company?.postalAddress?.street,
+          'city': this.company?.postalAddress?.city,
+          'province': this.company?.postalAddress?.province,
+          'country': this.company?.postalAddress?.country,
+          'postalCode': this.company?.postalAddress?.postalCode,
+        },
       }
     );
   }
 
+  onSameAsOwnerChecked() {
+    this.sameAsOwner = !this.sameAsOwner;
+    console.log(this.sameAsOwner)
+    if (this.sameAsOwner) {
+      this.copyOwnersDetialsToContactPerson()
+    } else {
+      this.companyForm.patchValue({
+        'contactPerson': {
+          'firstname': '',
+          'lastname': '',
+          'email': '',
+          'cell': '',
+        },
+      })
+    }
+  }
+
+  private copyOwnersDetialsToContactPerson() {
+    let owner = this.companyForm.getRawValue().owner;
+    console.log(owner)
+    this.companyForm.patchValue({
+      'contactPerson': {
+        'firstname': owner.firstname,
+        'lastname': owner.lastname,
+        'email': owner.email,
+        'cell': owner.cell
+      },
+    })
+  }
+
+  onSameAsPhysicalChecked() {
+    this.sameAsPhysical = !this.sameAsPhysical;
+    if (this.sameAsPhysical) {
+      this.copyPhysicalDetailsToContactPerson()
+    } else {
+      this.companyForm.patchValue({
+        'postalAddress': {
+          'street': '',
+          'city': '',
+          'province': '',
+          'country': '',
+          'postalCode': '',
+        },
+      })
+    }
+  }
+
+  copyPhysicalDetailsToContactPerson() {
+    let address = this.companyForm.getRawValue().physicalAddress;
+    this.companyForm.patchValue({
+      'postalAddress': {
+        'street': address.street,
+        'city': address.city,
+        'province': address.province,
+        'country': address.country,
+        'postalCode': address.postalCode,
+      },
+    })
+  }
 }

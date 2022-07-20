@@ -4,6 +4,7 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 import {map, shareReplay} from "rxjs/operators";
 import {CompanyService} from "../../services/company.service";
 import {Company} from "../../models/company.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'company',
@@ -13,7 +14,9 @@ import {Company} from "../../models/company.model";
 export class CompanyComponent implements OnInit {
 
   companyList: Array<Company> = [];
-  constructor(private breakpointObserver: BreakpointObserver, private companyService: CompanyService) {}
+  constructor(private breakpointObserver: BreakpointObserver,
+              private companyService: CompanyService,
+              private router: Router) {}
 
   ngOnInit(): void {
     if (this.companyService.companyList.length == 0){
@@ -27,6 +30,11 @@ export class CompanyComponent implements OnInit {
       map(result => result.matches),
       shareReplay()
     );
+
+  onCreateNewCompany(){
+   this.onSelectCompany(null!);
+    this.router.navigate(['/companies/create'])
+  }
 
   onSelectCompany(company:Company){
     this.companyService.setSelectedCompany(company)

@@ -10,6 +10,7 @@ const routes: Routes = [
   {path: 'settings', component: SettingsComponent},
   {path: 'companies', component: CompanyComponent,
     children: [
+      {path: 'create', component: CompanyDetailsTabComponent},
       {path: ':name', component: CompanyDetailsTabComponent},
     ]
   }

@@ -136,6 +136,16 @@
             </mat-form-field>
           </div>
         </div>
+        <div class="col-12 same-as-checkbox-container" >
+          <div class="">
+            <mat-checkbox
+              formControlName="sameAsOwner"
+              [checked]=sameAsOwner
+              (change)="onSameAsOwnerChecked()"
+              labelPosition="before"
+            >Same As Owner</mat-checkbox>
+          </div>
+        </div>
         <div class="div" formGroupName="contactPerson">
           <p>Contact Person</p>
 
@@ -238,10 +248,15 @@
             </mat-form-field>
           </div>
         </div>
-        <!--<div class="div">
-          <mat-checkbox checked="true">Same as Physical Address</mat-checkbox>
-        </div>-->
-        <mat-divider></mat-divider>
+        <div class="col-12 same-as-checkbox-container">
+          <div class="">
+            <mat-checkbox
+              formControlName=sameAsPhysical
+              [checked]=sameAsPhysical
+              (change)="onSameAsPhysicalChecked()"
+              labelPosition="before">Same As Physical</mat-checkbox>
+          </div>
+        </div>
         <div class="div" formGroupName="postalAddress">
           <p>Postal Address</p>
           <div class="col-12">
