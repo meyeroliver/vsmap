@@ -13,6 +13,7 @@ export class CompanyService {
   private addressList: Array<Address> = [];
   companyList: Array<Company> = [];
   companySelected = new EventEmitter<Company>();
+  //companySelected = new EventEmitter<Company>();
 
   setSelectedCompany(company: Company) {
     this.selectedCompany = company;
@@ -74,10 +75,21 @@ export class CompanyService {
     this.generateMockAddress()
 
     for (let i = 0; i < this.listLength; i++) {
-      company = new Company(cNameList[i], vatNumberList[i], staffCount[i], this.ownersList[i],
+      company = new Company(i, cNameList[i], vatNumberList[i], staffCount[i], this.ownersList[i],
         this.contactPersonList[i], this.addressList[i], this.addressList[i], industryList[i],
         businessTypeList[i], productionList[i]);
       this.companyList.push(company)
     }
+  }
+
+  saveCompany(newCompany: Company){
+    newCompany.id = this.companyList.length;
+    this.companyList.push(newCompany)
+  }
+
+  updateCompany(updatedCompany: Company){
+    console.log(updatedCompany.id)
+    let index = updatedCompany.id;
+    this.companyList[index] = updatedCompany;
   }
 }

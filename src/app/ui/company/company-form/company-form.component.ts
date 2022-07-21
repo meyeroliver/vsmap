@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CompanyService} from "../../../services/company.service";
-import {FormControl, FormGroup, Validator, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Company} from "../../../models/company.model";
-import {ContactPerson} from "../../../models/contactPerson.model";
-import {Address} from "../../../models/address.model";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -92,15 +90,15 @@ export class CompanyFormComponent implements OnInit {
         'env.businessType': this.company?.businessType,
         'env.production': this.company?.production,
         'owner': {
-          'firstname': this.company?.owner?.firstName,
-          'lastname': this.company?.owner?.lastName,
+          'firstname': this.company?.owner?.firstname,
+          'lastname': this.company?.owner?.lastname,
           'email': this.company?.owner?.email,
           'cell': this.company?.owner?.cell,
         },
         'sameAsOwner': this.sameAsOwner,
         'contactPerson': {
-          'firstname': this.company?.contactPerson?.firstName,
-          'lastname': this.company?.contactPerson?.lastName,
+          'firstname': this.company?.contactPerson?.firstname,
+          'lastname': this.company?.contactPerson?.lastname,
           'email': this.company?.contactPerson?.email,
           'cell': this.company?.contactPerson?.cell
         },
@@ -183,12 +181,26 @@ export class CompanyFormComponent implements OnInit {
     })
   }
 
+  getCurrentFormData(): Company{
+    let companyFormData = this.companyForm.getRawValue();
+    return new Company(0, companyFormData.companyName, companyFormData.vatNumber,
+      companyFormData.staffCount, companyFormData.owner, companyFormData.contactPerson,
+      companyFormData.physicalAddress, companyFormData.postalAddress, companyFormData.env.industry,
+      companyFormData.env.businessType, companyFormData.env.production);
+  }
+
   onEditClicked(){
     this.editable = !this.editable;
     this.newForm = !this.newForm;
   }
 
   onSaveClicked(){
-    this.onEditClicked()
+    let company: Company = this.getCurrentFormData();
+    if (this.newForm){
+       this.companyService.saveCompany(company);
+    } else {
+      this.companyService.updateCompany(company);
+    }
+    this.onEditClicked();
   }
 }
