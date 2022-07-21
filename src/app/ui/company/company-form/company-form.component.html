@@ -1,7 +1,7 @@
 <div>
   <div class="col-6 center">
     <mat-card>
-      <form class="" [formGroup]="companyForm" >
+      <form class="" [formGroup]="companyForm">
         <div class="">
           <mat-form-field appearance="outline" class="form-row-input">
             <mat-label>Company Name</mat-label>
@@ -10,6 +10,7 @@
               id="company"
               formControlName="companyName"
               placeholder="Company Name"
+              [readonly]="editable"
             >
             <!--          <mat-hint>Enter in the name on the company</mat-hint>-->
           </mat-form-field>
@@ -17,10 +18,12 @@
         <div class="div">
           <mat-form-field appearance="outline" class="form-row-input">
             <mat-label>VAT Number</mat-label>
-            <input matInput
-                   id="vatNum"
-                   formControlName="vatNumber"
-                   placeholder="00000000"
+            <input
+              matInput
+              id="vatNum"
+              formControlName="vatNumber"
+              placeholder="00000000"
+              [readonly]="editable"
             >
             <!--          <mat-hint>Enter in the VAT Number</mat-hint>-->
           </mat-form-field>
@@ -28,9 +31,11 @@
         <div class="div">
           <mat-form-field appearance="outline" class="form-row-input">
             <mat-label>Staff Count</mat-label>
-            <input matInput
-                   placeholder="36"
-                   formControlName="staffCount"
+            <input
+              matInput
+              placeholder="36"
+              formControlName="staffCount"
+              [readonly]="editable"
             >
             <!--          <mat-hint>Enter in the number of staff</mat-hint>-->
           </mat-form-field>
@@ -78,7 +83,7 @@
               class="form-row-input"
             >
               <mat-label>Production Style</mat-label>
-              <mat-select  formControlName="production">
+              <mat-select formControlName="production">
                 <mat-option value="primary">Primary</mat-option>
                 <mat-option value="accent">Accent</mat-option>
                 <mat-option value="warn">Warn</mat-option>
@@ -99,6 +104,7 @@
                 matInput
                 formControlName="firstname"
                 placeholder="Peter"
+                [readonly]="editable"
               >
               <!--          <mat-hint>Enter in the firstname of the owner</mat-hint>-->
             </mat-form-field>
@@ -109,6 +115,7 @@
                 matInput
                 formControlName="lastname"
                 placeholder="Oliver"
+                [readonly]="editable"
               >
               <!--          <mat-hint>Enter in the lastname of the owner</mat-hint>-->
             </mat-form-field>
@@ -121,6 +128,7 @@
                 matInput
                 formControlName="cell"
                 placeholder="026589462"
+                [readonly]="editable"
               >
               <!--          <mat-hint>Enter in the cell number of the owner</mat-hint>-->
             </mat-form-field>
@@ -131,19 +139,22 @@
                 matInput
                 formControlName="email"
                 placeholder="example@gmail.com"
+                [readonly]="editable"
               >
               <!--          <mat-hint>Enter in the email of the owner</mat-hint>-->
             </mat-form-field>
           </div>
         </div>
-        <div class="col-12 same-as-checkbox-container" >
+        <div class="col-12 same-as-checkbox-container">
           <div class="">
             <mat-checkbox
               formControlName="sameAsOwner"
               [checked]=sameAsOwner
               (change)="onSameAsOwnerChecked()"
+              [disabled] = "editable"
               labelPosition="before"
-            >Same As Owner</mat-checkbox>
+            >Same As Owner
+            </mat-checkbox>
           </div>
         </div>
         <div class="div" formGroupName="contactPerson">
@@ -252,9 +263,13 @@
           <div class="">
             <mat-checkbox
               formControlName=sameAsPhysical
+              labelPosition="before"
               [checked]=sameAsPhysical
               (change)="onSameAsPhysicalChecked()"
-              labelPosition="before">Same As Physical</mat-checkbox>
+              [disabled] = "editable"
+            >
+              Same As Physical
+            </mat-checkbox>
           </div>
         </div>
         <div class="div" formGroupName="postalAddress">
@@ -266,6 +281,7 @@
                 matInput
                 formControlName="street"
                 placeholder="64 Mileage Way"
+                [readonly]="editable"
               >
               <!--          <mat-hint>Enter in the email of the owner</mat-hint>-->
             </mat-form-field>
@@ -277,6 +293,7 @@
                 matInput
                 formControlName="city"
                 placeholder="Dieseldof"
+                [readonly]="editable"
               >
               <!--          <mat-hint>Enter in the cell number of the owner</mat-hint>-->
             </mat-form-field>
@@ -286,7 +303,9 @@
               <input
                 matInput
                 formControlName="province"
-                placeholder="Limpopo">
+                placeholder="Limpopo"
+                [readonly]="editable"
+              >
               <!--          <mat-hint>Enter in the email of the owner</mat-hint>-->
             </mat-form-field>
           </div>
@@ -298,6 +317,7 @@
                 matInput
                 formControlName="country"
                 placeholder="South Africa"
+                [readonly]="editable"
               >
               <!--          <mat-hint>Enter in the cell number of the owner</mat-hint>-->
             </mat-form-field>
@@ -307,10 +327,35 @@
               <input
                 matInput
                 formControlName="postalCode"
-                placeholder="0001">
+                placeholder="0001"
+                [readonly]="editable"
+              >
               <!--          <mat-hint>Enter in the email of the owner</mat-hint>-->
             </mat-form-field>
           </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="col-12 form-buttons-container">
+
+          <button
+            mat-raised-button
+            class="company-add-button"
+            color="primary"
+            (click)="onSaveClicked()"
+            *ngIf="newForm == true"
+          >
+            SAVE
+          </button>
+
+          <button
+            mat-raised-button
+            class="company-add-button"
+            color="primary"
+            (click)="onEditClicked()"
+            *ngIf="newForm != true"
+          >
+            EDIT
+          </button>
         </div>
       </form>
     </mat-card>

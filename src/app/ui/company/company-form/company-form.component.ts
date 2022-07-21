@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validator, Validators} from "@angular/forms";
 import {Company} from "../../../models/company.model";
 import {ContactPerson} from "../../../models/contactPerson.model";
 import {Address} from "../../../models/address.model";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'company-form',
@@ -16,12 +17,16 @@ export class CompanyFormComponent implements OnInit {
   company?: Company;
   sameAsPhysical: boolean = false;
   sameAsOwner: boolean = false;
+  newForm: boolean;
+  editable: boolean;
 
-  constructor(private companyService: CompanyService) {
+  constructor(private companyService: CompanyService, private route: ActivatedRoute) {
     this.companyService.companySelected.subscribe((company) => {
       this.company = company;
       this.populateForm();
     })
+    this.newForm =  this.route.snapshot.url[0].path === 'create';
+    this.editable = !this.newForm;
   }
 
   ngOnInit(): void {
@@ -47,17 +52,17 @@ export class CompanyFormComponent implements OnInit {
         'production': new FormControl(null),
       }),
       'owner': new FormGroup<any>({
-        'firstname': new FormControl(null,),
-        'lastname': new FormControl(null,),
-        'email': new FormControl(null,),
-        'cell': new FormControl(null,),
+        'firstname': new FormControl(null, Validators.required),
+        'lastname': new FormControl(null, Validators.required),
+        'email': new FormControl(null, [Validators.required, Validators.email]),
+        'cell': new FormControl(null, [Validators.required,]),
       }),
       'sameAsOwner': new FormControl<any>(false),
       'contactPerson': new FormGroup<any>({
-        'firstname': new FormControl(null,),
-        'lastname': new FormControl(null,),
-        'email': new FormControl(null,),
-        'cell': new FormControl(null,),
+        'firstname': new FormControl(null, Validators.required),
+        'lastname': new FormControl(null, Validators.required),
+        'email': new FormControl(null, [Validators.required, Validators.email]),
+        'cell': new FormControl(null, [Validators.required,]),
       }),
       'physicalAddress': new FormGroup<any>({
         'street': new FormControl(null, Validators.required),
@@ -176,5 +181,14 @@ export class CompanyFormComponent implements OnInit {
         'postalCode': address.postalCode,
       },
     })
+  }
+
+  onEditClicked(){
+    this.editable = !this.editable;
+    this.newForm = !this.newForm;
+  }
+
+  onSaveClicked(){
+    this.onEditClicked()
   }
 }
