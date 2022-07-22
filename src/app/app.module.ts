@@ -41,8 +41,10 @@ import {MatRippleModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
-    AppComponent, AppBarComponent, SideNavComponent, DashboardComponent, SettingsComponent, CompanyListComponent,
-    CompanyComponent, CompanyDetailsTabComponent, CompanyFormComponent, SupplierFormComponent, CustomerFormComponent, SupplierDetialsComponent, SupplierDetialsCardComponent,
+    AppComponent, AppBarComponent, SideNavComponent, DashboardComponent,
+    SettingsComponent, CompanyListComponent, CompanyComponent, CompanyDetailsTabComponent,
+    CompanyFormComponent, SupplierFormComponent, CustomerFormComponent, SupplierDetialsComponent,
+    SupplierDetialsCardComponent,
   ],
     imports: [
         BrowserModule,
