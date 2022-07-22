@@ -1,6 +1,5 @@
 import {Product} from "./product.model";
 import {ContactPerson} from "./contactPerson.model";
-import {Frequency} from "./frequency.model";
 
 export class Supplier{
   name: string;
@@ -12,4 +11,5 @@ export class Supplier{
     this.products = products;
     this.contactPerson = contactPerson;
   }
+
 }

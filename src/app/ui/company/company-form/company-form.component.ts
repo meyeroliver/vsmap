@@ -3,13 +3,14 @@ import {CompanyService} from "../../../services/company.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Company} from "../../../models/company.model";
 import {ActivatedRoute} from "@angular/router";
+import {Forms} from "../../../interfaces";
 
 @Component({
   selector: 'company-form',
   templateUrl: './company-form.component.html',
   styleUrls: ['./company-form.component.scss']
 })
-export class CompanyFormComponent implements OnInit {
+export class CompanyFormComponent implements OnInit, Forms {
 
   companyForm!: FormGroup;
   company?: Company;
@@ -39,7 +40,7 @@ export class CompanyFormComponent implements OnInit {
     }
   }
 
-  private setupForm() {
+  setupForm() {
     this.companyForm = new FormGroup<any>({
       'companyName': new FormControl(null, Validators.required),
       'vatNumber': new FormControl(null, Validators.required),

@@ -2,6 +2,9 @@ import {EventEmitter, Injectable} from "@angular/core";
 import {Company} from "../models/company.model";
 import {ContactPerson} from "../models/contactPerson.model";
 import {Address} from "../models/address.model";
+import {Frequency} from "../models/frequency.model";
+import {Supplier} from "../models/supplier.model";
+import {Product} from "../models/product.model";
 
 @Injectable()
 export class CompanyService {
@@ -12,8 +15,9 @@ export class CompanyService {
   private contactPersonList: Array<ContactPerson> = [];
   private addressList: Array<Address> = [];
   companyList: Array<Company> = [];
+  supplierList: Array<Supplier> = [];
+  productList: Array<Product> = [];
   companySelected = new EventEmitter<Company>();
-  //companySelected = new EventEmitter<Company>();
 
   setSelectedCompany(company: Company) {
     this.selectedCompany = company;
@@ -49,16 +53,16 @@ export class CompanyService {
     }
   }
 
-  private generateMockAddress(){
+  private generateMockAddress() {
     let streetList = ['okawe', 'masekind', 'isja'];
     let cityList = ['Kapse', 'Jozi', 'Durbs'];
     let provinceList = ['Western Cape', 'Guatenng a leng', 'Land of the Zulus'];
-    let postalCodeList = ['7983', '2357','0000']
+    let postalCodeList = ['7983', '2357', '0000']
     let address: Address;
 
     for (let i = 0; i < this.listLength; i++) {
-        address = new Address(streetList[i],cityList[i], provinceList[i], 'South Africa', postalCodeList[i]);
-        this.addressList.push(address);
+      address = new Address(streetList[i], cityList[i], provinceList[i], 'South Africa', postalCodeList[i]);
+      this.addressList.push(address);
     }
   }
 
@@ -73,6 +77,7 @@ export class CompanyService {
     this.generateMockContactPerson();
     this.generateMockOwners();
     this.generateMockAddress()
+    this.generateMockSuppliers();
 
     for (let i = 0; i < this.listLength; i++) {
       company = new Company(i, cNameList[i], vatNumberList[i], staffCount[i], this.ownersList[i],
@@ -82,12 +87,42 @@ export class CompanyService {
     }
   }
 
-  saveCompany(newCompany: Company){
+  generateMockProducts() {
+    let pName = ['Coffee Beans', 'Sugar', 'Milk'];
+    let orderFrequency = [
+      new Frequency(2, TimeFrame.WEEK),
+      new Frequency(1, TimeFrame.WEEK),
+      new Frequency(2, TimeFrame.WEEK),
+    ];
+    let leadTime = [
+      new Frequency(1, TimeFrame.DAY),
+      new Frequency(4, TimeFrame.DAY),
+      new Frequency(3, TimeFrame.DAY),
+    ];
+    let units = [30, 50, 15];
+    let product: Product;
+    for (let i = 0; i < pName.length; i++) {
+      product = new Product(pName[i], units[i], leadTime[i], orderFrequency[i]);
+      this.productList.push(product);
+    }
+  }
+
+  generateMockSuppliers() {
+    let sName = ['StarBucks', 'Hullets', 'Parmolat'];
+    this.generateMockProducts();
+    let supplier: Supplier;
+    for (let i = 0; i < sName.length; i++) {
+      supplier = new Supplier(sName[i], this.productList, this.contactPersonList[i]);
+      this.supplierList.push(supplier);
+    }
+  }
+
+  saveCompany(newCompany: Company) {
     newCompany.id = this.companyList.length;
     this.companyList.push(newCompany)
   }
 
-  updateCompany(updatedCompany: Company){
+  updateCompany(updatedCompany: Company) {
     console.log(updatedCompany.id)
     let index = updatedCompany.id;
     this.companyList[index] = updatedCompany;

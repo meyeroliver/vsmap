@@ -21,6 +21,7 @@ export class CompanyComponent implements OnInit {
   ngOnInit(): void {
     if (this.companyService.companyList.length == 0){
       this.companyService.generateMockCompanies();
+
     }
     this.companyList = this.companyService.companyList;
   }

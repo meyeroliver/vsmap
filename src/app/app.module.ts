@@ -35,37 +35,41 @@ import {CompanyFormComponent} from "./ui/company/company-form/company-form.compo
 import {CompanyListComponent} from "./ui/company/company-list/company-list.component";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {CompanyService} from "./services/company.service";
+import { SupplierDetialsComponent } from './ui/company/supplier-detials/supplier-detials.component';
+import { SupplierDetialsCardComponent } from './ui/company/supplier-detials-card/supplier-detials-card.component';
+import {MatRippleModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
     AppComponent, AppBarComponent, SideNavComponent, DashboardComponent, SettingsComponent, CompanyListComponent,
-    CompanyComponent, CompanyDetailsTabComponent, CompanyFormComponent, SupplierFormComponent, CustomerFormComponent,
+    CompanyComponent, CompanyDetailsTabComponent, CompanyFormComponent, SupplierFormComponent, CustomerFormComponent, SupplierDetialsComponent, SupplierDetialsCardComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    LayoutModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatListModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatTabsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    MatRadioModule,
-    ReactiveFormsModule,
-    MatCheckboxModule,
-    FormsModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        LayoutModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatListModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule,
+        MatTabsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatSelectModule,
+        MatRadioModule,
+        ReactiveFormsModule,
+        MatCheckboxModule,
+        FormsModule,
+        MatRippleModule,
+    ],
   providers: [CompanyService],
   bootstrap: [AppComponent],
 })

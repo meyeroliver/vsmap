@@ -1,0 +1,7 @@
+<div class="supplier-container">
+  <mat-grid-list cols="3" rowHeight="3:2">
+    <mat-grid-tile  *ngFor="let supplierEl of supplierList">
+      <supplier-detials-card [supplier]="supplierEl"></supplier-detials-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

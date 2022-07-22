@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'company-details-tab',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyDetailsTabComponent implements OnInit {
 
-  constructor() { }
+  selectedIndex: number = 1;
+  constructor(private route: ActivatedRoute) {
+
+  }
 
   ngOnInit(): void {
   }
