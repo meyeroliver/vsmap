@@ -24,7 +24,9 @@ export class CompanyFormComponent implements OnInit, Forms {
       this.company = company;
       this.populateForm();
     })
-    this.newForm =  this.route.snapshot.url[0].path === 'create';
+    this.newForm =  this.route.snapshot.url[1].path === 'create';
+    console.log(this.route.snapshot.url[0].path)
+    console.log(this.newForm)
     this.editable = !this.newForm;
   }
 

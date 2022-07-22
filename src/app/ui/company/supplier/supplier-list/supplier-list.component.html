@@ -7,12 +7,13 @@
         [lastname]="supplier.contactPerson.lastname"
         [email]="supplier.contactPerson.email"
         [cell]="supplier.contactPerson.cell"
+        (click)="onSupplierClicked(supplier)"
         class="col-11"
       ></contact-details-card>
     </mat-grid-tile>
   </mat-grid-list>
   <div class="supplier-add-button-container">
-    <button mat-fab color="primary" >
+    <button mat-fab color="primary" (click)="onCreateNewSupplier()">
       <mat-icon>add</mat-icon>
     </button>
   </div>

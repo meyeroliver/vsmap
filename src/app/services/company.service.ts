@@ -10,7 +10,7 @@ import {Product} from "../models/product.model";
 export class CompanyService {
 
   private selectedCompany?: Company;
-  private listLength: number = 3;
+  private listLength: number = 10;
   private ownersList: Array<ContactPerson> = [];
   private contactPersonList: Array<ContactPerson> = [];
   private addressList: Array<Address> = [];
@@ -34,9 +34,11 @@ export class CompanyService {
     let mailList = ['Pitte@mail.com', 'Kop@mail.com', 'Hond@mail.com'];
     let cp: ContactPerson;
 
-    for (let i = 0; i < this.listLength; i++) {
-      cp = new ContactPerson(ownerNameList[i], ownerLastList[i], mailList[i], cellNumberList[i]);
-      this.ownersList.push(cp);
+    for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < ownerLastList.length; i++) {
+        cp = new ContactPerson(ownerNameList[i], ownerLastList[i], mailList[i], cellNumberList[i]);
+        this.ownersList.push(cp);
+      }
     }
   }
 
@@ -47,9 +49,11 @@ export class CompanyService {
     let mailList = ['Tik@mail.com', 'Monster@mail.com', 'Hond@mail.com'];
     let cp: ContactPerson;
 
-    for (let i = 0; i < this.listLength; i++) {
-      cp = new ContactPerson(ownerNameList[i], ownerLastList[i], mailList[i], cellNumberList[i]);
-      this.contactPersonList.push(cp);
+    for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < ownerNameList.length; i++) {
+        cp = new ContactPerson(ownerNameList[i], ownerLastList[i], mailList[i], cellNumberList[i]);
+        this.contactPersonList.push(cp);
+      }
     }
   }
 
@@ -60,19 +64,37 @@ export class CompanyService {
     let postalCodeList = ['7983', '2357', '0000']
     let address: Address;
 
-    for (let i = 0; i < this.listLength; i++) {
-      address = new Address(streetList[i], cityList[i], provinceList[i], 'South Africa', postalCodeList[i]);
-      this.addressList.push(address);
+    for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < streetList.length; i++) {
+        address = new Address(streetList[i], cityList[i], provinceList[i], 'South Africa', postalCodeList[i]);
+        this.addressList.push(address);
+      }
     }
   }
 
   generateMockCompanies() {
-    let cNameList = ['Mugg And Bean', 'Addidas', 'Nestle'];
-    let staffCount = [40, 23, 100]
-    let vatNumberList = [1234678, 12345679, 1234677];
-    let industryList = ["Food", "Automotive", "Banking"];
-    let productionList = ["Discrete Mnufacturing", "Repetitive Manufacturing", "3D Printing"];
-    let businessTypeList = ["Private", "Public", "Non-Profit Organisation"];
+    let cNameList = [
+      'Mugg And Bean', 'Addidas', 'Nestle',
+      'Company1', 'Company2', 'Company3',
+      'Company4', 'Company5', 'Company6',
+      'Company7'];
+    let staffCount = [40, 23, 100, 40, 23, 100, 40, 23, 100, 40,]
+    let vatNumberList = [
+      1234678, 12345679, 1234677, 1234678, 12345679,
+      1234677, 1234678, 12345679, 1234677, 1234678,];
+    let industryList = [
+      "Food", "Automotive", "Banking", "Food", "Automotive",
+      "Banking", "Food", "Automotive", "Banking", "Food",];
+    let productionList = [
+      "Discrete Mnufacturing", "Repetitive Manufacturing", "3D Printing",
+      "Discrete Mnufacturing", "Repetitive Manufacturing", "3D Printing",
+      "Discrete Mnufacturing", "Repetitive Manufacturing", "3D Printing",
+      "Discrete Mnufacturing",];
+    let businessTypeList = [
+      "Private", "Public", "Non-Profit Organisation",
+      "Private", "Public", "Non-Profit Organisation",
+      "Private", "Public", "Non-Profit Organisation",
+      "Private",];
     let company: Company;
     this.generateMockContactPerson();
     this.generateMockOwners();

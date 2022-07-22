@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Supplier} from "../../../../models/supplier.model";
 import {CompanyService} from "../../../../services/company.service";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'supplier-list',
@@ -12,7 +13,7 @@ export class SupplierListComponent implements OnInit {
   supplierList: Array<Supplier> = [];
   public innerHeight: any;
 
-  constructor(private companyService: CompanyService) {
+  constructor(private companyService: CompanyService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -20,7 +21,12 @@ export class SupplierListComponent implements OnInit {
     this.innerHeight = window.innerHeight + 48;
   }
 
-  onCreateNewSupplier(supplier: Supplier) {
+  onCreateNewSupplier() {
+    this.router.navigate([`suppliers/create`], {relativeTo: this.route}).then();
+  }
 
+  onSupplierClicked(supplier: Supplier){
+    this.router.navigate([`suppliers/${supplier.name}`], {relativeTo: this.route}).then();
   }
 }
+

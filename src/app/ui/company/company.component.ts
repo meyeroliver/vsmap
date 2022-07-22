@@ -32,14 +32,17 @@ export class CompanyComponent implements OnInit {
     );
 
   onCreateNewCompany() {
-    this.onSelectCompany(null!);
+    this.updateSelectedCompany(null!);
     this.router.navigate(['/companies/create']).then();
   }
 
   onSelectCompany(company: Company) {
+    this.updateSelectedCompany(company)
+    this.router.navigate([`/companies/${company.name}`]).then();
+  }
+
+  updateSelectedCompany(company: Company){
     this.companyService.setSelectedCompany(company)
     this.companyService.companySelected.emit(company);
-    this.router.navigate([`/companies/${company.name}`]).then();
-    console.log(company);
   }
 }

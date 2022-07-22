@@ -31,7 +31,5 @@ export class CompanyListComponent implements AfterViewInit {
 
   onRowClick(row: any): void{
     this.router.navigate(['/companies/:1']).then();
-
-    //console.log(`${name} was clicked`);
   }
 }
