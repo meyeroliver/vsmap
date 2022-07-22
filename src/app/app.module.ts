@@ -38,6 +38,7 @@ import {CompanyService} from "./services/company.service";
 import { SupplierDetialsComponent } from './ui/company/supplier-detials/supplier-detials.component';
 import { SupplierDetialsCardComponent } from './ui/company/supplier-detials-card/supplier-detials-card.component';
 import {MatRippleModule} from "@angular/material/core";
+import { ContactDetailsCardComponent } from './ui/company/contact-details-card/contact-details-card.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {MatRippleModule} from "@angular/material/core";
     SettingsComponent, CompanyListComponent, CompanyComponent, CompanyDetailsTabComponent,
     CompanyFormComponent, SupplierFormComponent, CustomerFormComponent, SupplierDetialsComponent,
     SupplierDetialsCardComponent,
+    ContactDetailsCardComponent,
   ],
     imports: [
         BrowserModule,

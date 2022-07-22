@@ -1,36 +1,20 @@
 <div class="company-container">
-  <mat-drawer-container class="company-drawer-container">
-    <mat-drawer class="company-drawer" mode="side" opened>
-      <div class="title-container">
-        <h3>Company list</h3>
-      </div>
-      <div class="company-list-container">
-        <mat-nav-list>
-          <a mat-list-item *ngFor="let company of companyList"
-             [routerLink]="['/companies', company.name]"
-             (click)="onSelectCompany(company)"
-          >
-            {{company.name}}
-          </a>
-        </mat-nav-list>
-      </div>
-      <div class="col-12">
-        <button
-          mat-raised-button
-          class="company-add-button"
-          color="primary"
-          (click)="onCreateNewCompany()"
-        >
-          ADD COMPANY
-        </button>
-      </div>
-    </mat-drawer>
-    <mat-drawer-content>
-      <router-outlet>
-
-      </router-outlet>
-    </mat-drawer-content>
-  </mat-drawer-container>
-
-
+  <mat-grid-list cols="3" rowHeight="2:1">
+    <mat-grid-tile  *ngFor="let company of companyList">
+      <contact-details-card
+        [title]="company.name"
+        [firstname]="company.contactPerson.firstname"
+        [lastname]="company.contactPerson.lastname"
+        [email]="company.contactPerson.email"
+        [cell]="company.contactPerson.cell"
+        class="col-11"
+      >
+      </contact-details-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div >
+    <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
 </div>
