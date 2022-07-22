@@ -1,0 +1,11 @@
+
+
+.supplier-add-button-container{
+  position: absolute;
+  right: 32px;
+  bottom: 32px;
+}
+
+:host ::ng-deep mat-tab-body-wrapper {
+  height: 100%;
+}

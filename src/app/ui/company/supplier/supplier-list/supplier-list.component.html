@@ -1,0 +1,19 @@
+<div  [style.height]="innerHeight">
+  <mat-grid-list cols="3" rowHeight="2:1">
+    <mat-grid-tile  *ngFor="let supplier of supplierList">
+      <contact-details-card
+        [title]="supplier.name"
+        [firstname]="supplier.contactPerson.firstname"
+        [lastname]="supplier.contactPerson.lastname"
+        [email]="supplier.contactPerson.email"
+        [cell]="supplier.contactPerson.cell"
+        class="col-11"
+      ></contact-details-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div class="supplier-add-button-container">
+    <button mat-fab color="primary" >
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

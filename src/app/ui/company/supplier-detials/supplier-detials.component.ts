@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {CompanyService} from "../../../services/company.service";
-import {Supplier} from "../../../models/supplier.model";
 
 @Component({
   selector: 'supplier-detials',
@@ -9,13 +7,10 @@ import {Supplier} from "../../../models/supplier.model";
 })
 export class SupplierDetialsComponent implements OnInit {
 
-  supplierList: Array<Supplier> = [];
-
-
-  constructor(private companyService: CompanyService) {
+  constructor() {
   }
 
   ngOnInit(): void {
-    this.supplierList = this.companyService.supplierList;
+
   }
 }
