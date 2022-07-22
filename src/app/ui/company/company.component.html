@@ -7,13 +7,14 @@
         [lastname]="company.contactPerson.lastname"
         [email]="company.contactPerson.email"
         [cell]="company.contactPerson.cell"
+        (click)="onSelectCompany(company)"
         class="col-11"
       >
       </contact-details-card>
     </mat-grid-tile>
   </mat-grid-list>
-  <div >
-    <button mat-fab color="primary" aria-label="Example icon button with a delete icon">
+  <div class="company-add-button-container">
+    <button mat-fab color="primary" (click)="onCreateNewCompany()">
       <mat-icon>add</mat-icon>
     </button>
   </div>

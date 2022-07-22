@@ -23,7 +23,9 @@
 }
 
 .company-add-button-container{
-  
+  position: absolute;
+  right: 32px;
+  bottom: 32px;
 }
 .company-add-button{
   width: calc(100% - 32px);

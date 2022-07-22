@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Forms} from "../../../interfaces";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Company} from "../../../models/company.model";
+import {CompanyService} from "../../../services/company.service";
 
 @Component({
   selector: 'contact-details-card',
@@ -41,5 +43,4 @@ export class ContactDetailsCardComponent implements OnInit, Forms{
       'cell': new FormControl({value: null, disabled: true}, [Validators.required,]),
     });
   }
-
 }
