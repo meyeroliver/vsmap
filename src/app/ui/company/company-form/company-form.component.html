@@ -355,7 +355,7 @@
             class="company-add-button"
             color="primary"
             (click)="onSaveClicked()"
-            *ngIf="newForm == true"
+            *ngIf="saveable == true"
           >
             SAVE
           </button>
@@ -365,7 +365,7 @@
             class="company-add-button"
             color="primary"
             (click)="onEditClicked()"
-            *ngIf="newForm != true"
+            *ngIf="saveable != true"
           >
             EDIT
           </button>

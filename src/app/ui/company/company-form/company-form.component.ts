@@ -18,6 +18,7 @@ export class CompanyFormComponent implements OnInit, Forms {
   sameAsOwner: boolean = false;
   newForm: boolean;
   editable: boolean;
+  saveable:boolean;
 
   constructor(private companyService: CompanyService, private route: ActivatedRoute) {
     this.companyService.companySelected.subscribe((company) => {
@@ -25,9 +26,8 @@ export class CompanyFormComponent implements OnInit, Forms {
       this.populateForm();
     })
     this.newForm =  this.route.snapshot.url[1].path === 'create';
-    console.log(this.route.snapshot.url[0].path)
-    console.log(this.newForm)
     this.editable = !this.newForm;
+    this.saveable = this.newForm;
   }
 
   ngOnInit(): void {
@@ -194,7 +194,7 @@ export class CompanyFormComponent implements OnInit, Forms {
 
   onEditClicked(){
     this.editable = !this.editable;
-    this.newForm = !this.newForm;
+    this.saveable = !this.saveable;
   }
 
   onSaveClicked(){
