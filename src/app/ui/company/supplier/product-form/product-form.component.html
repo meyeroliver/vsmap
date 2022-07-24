@@ -68,8 +68,16 @@
         </form>
       </mat-card-content>
       <mat-card-actions style="display: flex; justify-content: flex-end">
-        <button mat-button>EDIT</button>
-        <button mat-button>SAVE</button>
+        <button
+          mat-button
+          *ngIf="saveable"
+          (click)="onSaveClicked()"
+        >SAVE</button>
+        <button
+        mat-button
+        *ngIf="!saveable"
+        (click)="onEditClicked()"
+        >EDIT</button>
       </mat-card-actions>
     </mat-card>
   </div>
