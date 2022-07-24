@@ -122,8 +122,12 @@ export class CompanyService {
   }
 
   generateMockProducts() {
-    let pName = ['Coffee Beans', 'Sugar', 'Milk'];
+    let pName = ['Coffee Beans', 'Sugar', 'Milk', 'Rice', 'iron', 'cobalt', 'potatoes'];
     let orderFrequency = [
+      new Frequency(2, TimeFrame.WEEK),
+      new Frequency(1, TimeFrame.WEEK),
+      new Frequency(2, TimeFrame.WEEK),
+      new Frequency(2, TimeFrame.WEEK),
       new Frequency(2, TimeFrame.WEEK),
       new Frequency(1, TimeFrame.WEEK),
       new Frequency(2, TimeFrame.WEEK),
@@ -132,8 +136,12 @@ export class CompanyService {
       new Frequency(1, TimeFrame.DAY),
       new Frequency(4, TimeFrame.DAY),
       new Frequency(3, TimeFrame.DAY),
+      new Frequency(1, TimeFrame.DAY),
+      new Frequency(4, TimeFrame.DAY),
+      new Frequency(3, TimeFrame.DAY),
+      new Frequency(3, TimeFrame.DAY),
     ];
-    let units = [30, 50, 15];
+    let units = [30, 50, 15, 30, 50, 15, 22];
     let product: Product;
     for (let i = 0; i < pName.length; i++) {
       product = new Product(pName[i], units[i], leadTime[i], orderFrequency[i]);
