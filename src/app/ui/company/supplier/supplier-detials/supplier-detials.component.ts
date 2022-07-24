@@ -8,7 +8,7 @@ import {Component, OnInit} from '@angular/core';
 export class SupplierDetialsComponent implements OnInit {
 
   cardList: Array<{title: string, cols: number, rows: number}>;
-  rowHeight!: string;
+  containerHeight!: string;
 
   constructor() {
     this.cardList = [];
@@ -22,7 +22,6 @@ export class SupplierDetialsComponent implements OnInit {
       {title: 'Product List', cols: 2, rows: 2},
     ];
 
-    this.rowHeight = `${((window.innerHeight - 64 - 16 ) / 4)}px`;
-    console.log(this.rowHeight)
+    this.containerHeight = `${((window.innerHeight - 64 - 16) / 2)}px`;
   }
 }

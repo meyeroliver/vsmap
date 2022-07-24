@@ -1,21 +1,15 @@
-<div class="grid-container">
-  <mat-grid-list
-    cols="2"
-    [rowHeight]="rowHeight">
-    <mat-grid-tile
-      *ngFor="let card of cardList;"
-      [colspan]="card.cols"
-      [rowspan]="card.rows">
-      <div class="dashboard-card">
-        <mat-card-content
-          class="dashboard-card-content"
-          [ngSwitch]="card.title"
-        >
-          <supplier-form *ngSwitchCase="'Supplier'"></supplier-form>
-          <product-form *ngSwitchCase="'Product'"></product-form>
-          <product-list *ngSwitchCase="'Product List'"></product-list>
-        </mat-card-content>
-      </div>
-    </mat-grid-tile>
-  </mat-grid-list>
+<div class="grid-container" style="padding: 16px;">
+  <div class="row" style="margin-bottom: 16px;">
+    <div class="form-row-input">
+      <supplier-form style="height: 100%"></supplier-form>
+    </div>
+    <div class="form-row-input">
+      <product-form></product-form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+    <product-list ></product-list>
+    </div>
+  </div>
 </div>
