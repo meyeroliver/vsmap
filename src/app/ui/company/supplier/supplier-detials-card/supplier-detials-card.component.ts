@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 
-import {Forms} from "../../../interfaces";
-import {Supplier} from "../../../models/supplier.model";
+import {Forms} from "../../../../interfaces";
+import {Supplier} from "../../../../models/supplier.model";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({

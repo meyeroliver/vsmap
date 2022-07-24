@@ -28,18 +28,20 @@ import { SideNavComponent } from './ui/side-nav/side-nav.component';
 import { DashboardComponent } from './ui/dashboard/dashboard.component';
 import { SettingsComponent } from './ui/settings/settings.component';
 import { CompanyComponent } from './ui/company/company.component';
-import { SupplierFormComponent } from './ui/company/supplier-form/supplier-form.component';
+import { SupplierFormComponent } from './ui/company/supplier/supplier-form/supplier-form.component';
 import { CustomerFormComponent } from './ui/company/customer-form/customer-form.component';
 import {CompanyDetailsTabComponent} from "./ui/company/company-details-tab/company-details-tab.component";
 import {CompanyFormComponent} from "./ui/company/company-form/company-form.component";
 import {CompanyListComponent} from "./ui/company/company-list/company-list.component";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {CompanyService} from "./services/company.service";
-import { SupplierDetialsComponent } from './ui/company/supplier-detials/supplier-detials.component';
-import { SupplierDetialsCardComponent } from './ui/company/supplier-detials-card/supplier-detials-card.component';
+import { SupplierDetialsComponent } from './ui/company/supplier/supplier-detials/supplier-detials.component';
+import { SupplierDetialsCardComponent } from './ui/company/supplier/supplier-detials-card/supplier-detials-card.component';
 import {MatRippleModule} from "@angular/material/core";
 import { ContactDetailsCardComponent } from './ui/company/contact-details-card/contact-details-card.component';
 import { SupplierListComponent } from './ui/company/supplier/supplier-list/supplier-list.component';
+import { ProductListComponent } from './ui/company/supplier/product-list/product-list.component';
+import { ProductFormComponent } from './ui/company/supplier/product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { SupplierListComponent } from './ui/company/supplier/supplier-list/suppl
     SupplierDetialsCardComponent,
     ContactDetailsCardComponent,
     SupplierListComponent,
+    ProductListComponent,
+    ProductFormComponent,
   ],
     imports: [
         BrowserModule,

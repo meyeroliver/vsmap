@@ -4,7 +4,7 @@ import {DashboardComponent} from "./ui/dashboard/dashboard.component";
 import {SettingsComponent} from "./ui/settings/settings.component";
 import {CompanyComponent} from "./ui/company/company.component";
 import {CompanyDetailsTabComponent} from "./ui/company/company-details-tab/company-details-tab.component";
-import {SupplierDetialsComponent} from "./ui/company/supplier-detials/supplier-detials.component";
+import {SupplierDetialsComponent} from "./ui/company/supplier/supplier-detials/supplier-detials.component";
 
 const routes: Routes = [
   {path: 'home', component: DashboardComponent},

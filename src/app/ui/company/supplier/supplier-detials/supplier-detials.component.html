@@ -1,0 +1,21 @@
+<div class="grid-container">
+  <mat-grid-list
+    cols="2"
+    [rowHeight]="rowHeight">
+    <mat-grid-tile
+      *ngFor="let card of cardList;"
+      [colspan]="card.cols"
+      [rowspan]="card.rows">
+      <div class="dashboard-card">
+        <mat-card-content
+          class="dashboard-card-content"
+          [ngSwitch]="card.title"
+        >
+          <supplier-form *ngSwitchCase="'Supplier'"></supplier-form>
+          <product-form *ngSwitchCase="'Product'"></product-form>
+          <product-list *ngSwitchCase="'Product List'"></product-list>
+        </mat-card-content>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
