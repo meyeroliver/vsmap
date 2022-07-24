@@ -26,6 +26,8 @@ export class SupplierListComponent implements OnInit {
   }
 
   onSupplierClicked(supplier: Supplier){
+    this.companyService.supplierSelected.emit(supplier);
+    this.companyService.setSelectedSupplier(supplier);
     this.router.navigate([`suppliers/${supplier.name}`], {relativeTo: this.route}).then();
   }
 }

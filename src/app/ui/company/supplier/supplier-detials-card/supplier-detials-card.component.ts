@@ -4,6 +4,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Forms} from "../../../../interfaces";
 import {Supplier} from "../../../../models/supplier.model";
 import {ActivatedRoute, Router} from "@angular/router";
+import {CompanyService} from "../../../../services/company.service";
 
 @Component({
   selector: 'supplier-detials-card',
@@ -16,7 +17,8 @@ export class SupplierDetialsCardComponent implements OnInit, Forms {
   supplierDetailsform!: FormGroup;
   title?: string;
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router, private route: ActivatedRoute,
+              private companyService: CompanyService) {
   }
 
   ngOnInit(): void {
@@ -44,8 +46,5 @@ export class SupplierDetialsCardComponent implements OnInit, Forms {
     });
   }
 
-  onSupplierClick() {
-    this.router.navigate([`suppliers/${this.title}`], {relativeTo: this.route}).then();
-    console.log(`awe, a supplier ${this.title} was click`);
-  }
+
 }

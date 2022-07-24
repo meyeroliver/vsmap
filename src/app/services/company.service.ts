@@ -9,7 +9,7 @@ import {Product} from "../models/product.model";
 @Injectable()
 export class CompanyService {
 
-  private selectedCompany?: Company;
+
   private listLength: number = 10;
   private ownersList: Array<ContactPerson> = [];
   private contactPersonList: Array<ContactPerson> = [];
@@ -18,6 +18,9 @@ export class CompanyService {
   supplierList: Array<Supplier> = [];
   productList: Array<Product> = [];
   companySelected = new EventEmitter<Company>();
+  private selectedCompany?: Company;
+  supplierSelected = new EventEmitter<Supplier>();
+  private selectedSupplier?: Supplier;
 
   setSelectedCompany(company: Company) {
     this.selectedCompany = company;
@@ -25,6 +28,15 @@ export class CompanyService {
 
   getSelectedCompany(): Company {
     return this.selectedCompany!;
+  }
+
+
+  getSelectedSupplier(): Supplier {
+    return this.selectedSupplier!;
+  }
+
+  setSelectedSupplier(value: Supplier) {
+    this.selectedSupplier = value;
   }
 
   private generateMockOwners() {
